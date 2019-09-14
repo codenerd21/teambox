@@ -5,13 +5,6 @@ def home(request):
   return HttpResponse('<h1>Home Page - Returning HTTP Response</h1>')
 
 def about(request):
-  return HttpResponse('<h1>About the Team Box</h1>')
-
-#Code below from Tasty
+  return render(request, 'about.html')
 
 
-# def home(request):
-#     return render(
-#         request,
-#         'main/home.html',
-#     )
