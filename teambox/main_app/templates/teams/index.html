@@ -4,12 +4,14 @@
 <h1>List of Teams</h1>
 
 {% for team in teams %}
-  <div class="card">
-    <div class="card-content">
-      <span class="card-title">{{ team.name }}</span>
-      <p>Grade: {{ team.grade }}</p>
-      <p>Gender: {{ team.gender }}</p>
+  <a href="/teams/{{ team.id }}">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ team.name }}</span>
+        <p>Grade: {{ team.grade }}</p>
+        <p>Gender: {{ team.gender }}</p>
+      </div>
     </div>
-  </div>
+  </a>
 {% endfor %}
 {% endblock %}

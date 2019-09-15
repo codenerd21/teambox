@@ -11,3 +11,4 @@ def about(request):
 def teams_index(request):
   teams = Team.objects.all()
   return render(request, 'teams/index.html', {'teams': teams})
+
