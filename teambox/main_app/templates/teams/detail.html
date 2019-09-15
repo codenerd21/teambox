@@ -9,6 +9,10 @@
     <p>Grade: {{ team.grade }}</p>
     <p>Gender: {{ team.gender }}</p>
   </div>
+  <div class="card-action">
+    <a href="{% url 'team_update' team.id %}">Edit</a>
+    <a href="{% url 'team_delete' team.id %}">Delete</a>
+  </div>
 </div>
 
 {% endblock %}
