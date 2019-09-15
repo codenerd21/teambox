@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Team
+
 
 def home(request):
   return render(request, 'home.html')
@@ -15,3 +17,7 @@ def teams_index(request):
 def teams_detail(request, team_id):
   team = Team.objects.get(id=team_id)
   return render(request, 'teams/detail.html', {'team': team})
+
+class TeamCreate(CreateView):
+  model = Team
+  fields = '__all__'
