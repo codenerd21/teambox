@@ -6,3 +6,7 @@ class Team(models.Model):
   grade = models.CharField(max_length=2, validators=[RegexValidator(r'^\d{1,10}$')])
   gender = models.CharField(max_length=15)
 
+  def __str__(self):
+    return f'{self.name}({self.id})'
+
+
