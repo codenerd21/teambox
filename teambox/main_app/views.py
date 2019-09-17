@@ -1,14 +1,15 @@
 from django.shortcuts import render
+from django.db.models import Q
+from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Team
-
+from itertools import chain
+from .models import Team, Player, Stat
 
 def home(request):
   return render(request, 'home.html')
 
 def about(request):
   return render(request, 'about.html')
-
 
 def teams_index(request):
   teams = Team.objects.all()
@@ -29,3 +30,24 @@ class TeamUpdate(UpdateView):
 class TeamDelete(DeleteView):
   model = Team
   success_url = '/teams/'
+
+class HomePageView(TemplateView):
+  template_name = 'home.html'
+
+def get_queryset(request):
+  query = request.GET.get('q')
+  t = Team.objects.filter(
+    Q(name__icontains=query)
+  )
+  p = Player.objects.filter(
+    Q(first_name__icontains=query)
+  )
+  s = Stat.objects.filter(
+    Q(name__icontains=query)
+  )
+  object_list = chain(t, p, s)
+  return render(request, 'search_results.html', {'object_list': object_list})
+
+
+
+
