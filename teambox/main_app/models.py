@@ -20,16 +20,16 @@ class Team(models.Model):
   def get_absolute_url(self):
     return reverse('detail', kwargs={'team_id': self.id})
 
-class Player(models.Model):
-  first_name = models.CharField(max_length=20)
-  number = models.IntegerField()
-  position = models.CharField(
-    max_length=2,
-    choices=POSITIONS,
-    default=POSITIONS[0][0]
-  )
-  team = models.ForeignKey(Team, on_delete=models.CASCADE, default=None)
+# class Player(models.Model):
+#   first_name = models.CharField(max_length=20)
+#   number = models.IntegerField()
+#   position = models.CharField(
+#     max_length=2,
+#     choices=POSITIONS,
+#     default=POSITIONS[0][0]
+#   )
+#   team = models.ForeignKey(Team, on_delete=models.CASCADE, default=None)
 
-  def __str__(self):
-    return f'{self.get_position_display()}'
+#   def __str__(self):
+#     return f'{self.get_position_display()}'
   
