@@ -39,10 +39,7 @@ def get_queryset(request):
   t = Team.objects.filter(
     Q(name__icontains=query)
   )
-  p = Player.objects.filter(
-    Q(first_name__icontains=query)
-  )
-  object_list = chain(t, p)
+  object_list = chain(t)
   return render(request, 'search_results.html', {'object_list': object_list})
 
 
