@@ -4,6 +4,7 @@ from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from itertools import chain
 from .models import Team, Player
+from .forms import PlayerForm
 
 def home(request):
   return render(request, 'home.html')
@@ -17,7 +18,10 @@ def teams_index(request):
 
 def teams_detail(request, team_id):
   team = Team.objects.get(id=team_id)
-  return render(request, 'teams/detail.html', {'team': team})
+  player_form = PlayerForm()
+  return render(request, 'teams/detail.html', 
+    {'team': team, 'player_form': player_form}
+  )
 
 class TeamCreate(CreateView):
   model = Team
