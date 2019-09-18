@@ -42,6 +42,7 @@ class Player(models.Model):
     choices=POSITIONS,
     default=POSITIONS[0][0]
   )
+  team = models.ForeignKey(Team, on_delete=models.CASCADE, default=None)
 
   def __str__(self):
     return f'{self.get_position_display()}'
