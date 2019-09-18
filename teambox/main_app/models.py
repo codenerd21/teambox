@@ -32,4 +32,7 @@ class Player(models.Model):
 
   def __str__(self):
     return f'{self.get_position_display()}'
+
+  class Meta:
+    ordering = ['first_name']
   

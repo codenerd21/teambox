@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db.models import Q
 from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -22,6 +22,14 @@ def teams_detail(request, team_id):
   return render(request, 'teams/detail.html', 
     {'team': team, 'player_form': player_form}
   )
+
+def add_player(request, team_id):
+  form = PlayerForm(request.POST)
+  if form.is_valid():
+    new_player = form.save(commit=False)
+    new_player.team_id = team_id
+    new_player.save()
+  return redirect('detail', team_id=team_id)
 
 class TeamCreate(CreateView):
   model = Team
