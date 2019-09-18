@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from itertools import chain
-from .models import Team, Player, Stat
+from .models import Team
 
 def home(request):
   return render(request, 'home.html')
