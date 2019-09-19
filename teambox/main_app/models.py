@@ -36,3 +36,10 @@ class Player(models.Model):
   class Meta:
     ordering = ['first_name']
   
+class Photo(models.Model):
+  url = models.CharField(max_length=200)
+  team = models.ForeignKey(Team, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"Photo for team_id: {self.team_id} @{self.url}"
+  
