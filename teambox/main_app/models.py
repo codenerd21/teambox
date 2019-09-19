@@ -31,7 +31,7 @@ class Player(models.Model):
   team = models.ForeignKey(Team, on_delete=models.CASCADE)
 
   def __str__(self):
-    return f'{self.get_position_display()}'
+    return f'{self.first_name}'
 
   class Meta:
     ordering = ['first_name']
