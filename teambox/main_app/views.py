@@ -3,8 +3,13 @@ from django.db.models import Q
 from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from itertools import chain
-from .models import Team, Player
+import boto3
+import uuid
+from .models import Team, Player, Photo
 from .forms import PlayerForm
+
+S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
+BUCKET = 'teambox21'
 
 def home(request):
   return render(request, 'home.html')
@@ -29,6 +34,20 @@ def add_player(request, team_id):
     new_player = form.save(commit=False)
     new_player.team_id = team_id
     new_player.save()
+  return redirect('detail', team_id=team_id)
+
+def add_photo(request, team_id):
+  photo_file = request.FILES.get('photo-file', None)
+  if photo_file:
+    s3 = boto3.client('s3')
+    key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+    try:
+      s3.upload_fileobj(photo_file, BUCKET, key)
+      url = f"{S3_BASE_URL}{BUCKET}/{key}"
+      photo = Photo(url=url, team_id)
+      photo.save()
+    except:
+      print('An error occurred uploading file to S3')
   return redirect('detail', team_id=team_id)
 
 class TeamCreate(CreateView):
