@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from django.db.models import Q
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from itertools import chain
 import boto3
 import uuid
-from .models import Team, Player, Photo
+from .models import Team, Player, Strength, Photo
 from .forms import PlayerForm
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
@@ -72,6 +72,10 @@ def get_queryset(request):
   )
   object_list = chain(t)
   return render(request, 'search_results.html', {'object_list': object_list})
+
+class StrengthList(ListView):
+  model = Strength
+
 
 
 
