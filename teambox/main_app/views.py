@@ -76,6 +76,9 @@ def get_queryset(request):
 class StrengthList(ListView):
   model = Strength
 
+class StrengthDetail(DetailView):
+  model = Strength
+
 
 
 
