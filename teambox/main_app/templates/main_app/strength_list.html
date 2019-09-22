@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Team Strength Attributes</h1>
+
+{% for strength in strength_list %}
+  <a href="{% url 'strength_detail' strength.id %}">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ strength.name }}</span>
+      </div>
+    </div>
+  </a>
+{% endfor %}
+{% endblock %}
