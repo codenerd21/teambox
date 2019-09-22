@@ -9,6 +9,15 @@ POSITIONS = (
   ('C', 'Center'),
 )
 
+class Strength(models.Model):
+  name = models.CharField(max_length=30)
+
+  def __str__(self):
+    return self.name
+
+  def get_absolute_url(self):
+    return reverse('strength_detail', kwargs={'pk': self.id})
+
 class Team(models.Model):
   name = models.CharField(max_length=30)
   grade = models.IntegerField()
