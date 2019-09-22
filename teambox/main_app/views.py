@@ -79,6 +79,10 @@ class StrengthList(ListView):
 class StrengthDetail(DetailView):
   model = Strength
 
+class StrengthCreate(CreateView):
+  model = Strength
+  fields = '__all__'
+
 
 
 

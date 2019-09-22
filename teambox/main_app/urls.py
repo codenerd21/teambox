@@ -14,5 +14,6 @@ urlpatterns = [
   path('teams/<int:team_id>/add_photo/', views.add_photo, name='add_photo'),
   path('strength/', views.StrengthList.as_view(), name='strengths_index'),
   path('strength/<int:pk>/', views.StrengthDetail.as_view(), name='strength_detail'),
+  path('strength/create/', views.StrengthCreate.as_view(), name="strength_create"),
 ]
 
