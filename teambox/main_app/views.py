@@ -23,9 +23,14 @@ def teams_index(request):
 
 def teams_detail(request, team_id):
   team = Team.objects.get(id=team_id)
+  avail_strengths = Strength.objects.exclude(id__in = team.strengths.all().values_list('id'))
   player_form = PlayerForm()
   return render(request, 'teams/detail.html', 
-    {'team': team, 'player_form': player_form}
+    {
+      'team': team, 
+      'player_form': player_form,
+      'avail_strengths': avail_strengths
+    }
   )
 
 def add_player(request, team_id):
