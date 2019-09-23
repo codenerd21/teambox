@@ -83,6 +83,14 @@ class StrengthCreate(CreateView):
   model = Strength
   fields = '__all__'
 
+class StrengthUpdate(UpdateView):
+  model = Strength
+  fields = '__all__'
+
+class StrengthDelete(DeleteView):
+  model = Strength
+  success_url = '/strength/'
+
 
 
 
