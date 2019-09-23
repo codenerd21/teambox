@@ -22,6 +22,7 @@ class Team(models.Model):
   name = models.CharField(max_length=30)
   grade = models.IntegerField()
   gender = models.CharField(max_length=15)
+  strengths = models.ManyToManyField(Strength)
 
   def __str__(self):
     return f'{self.name} ({self.id})'

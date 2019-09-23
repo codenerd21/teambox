@@ -10,7 +10,8 @@
         <span class="card-title">{{ strength.name }}</span>
       </div>
       <div class="card-action">
-
+        <a href="{% url 'strength_update' strength.id %}">Edit Strength</a>
+        <a href="{% url 'strength_delete' strength.id %}">Delete Strength</a>
       </div>
     </div>
   </div>
