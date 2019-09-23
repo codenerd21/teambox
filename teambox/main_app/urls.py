@@ -14,9 +14,9 @@ urlpatterns = [
   path('teams/<int:team_id>/add_photo/', views.add_photo, name='add_photo'),
   path('teams/<int:team_id>/assoc_strength/<int:strength_id>/', views.assoc_strength, name='assoc_strength'),
   path('teams/<int:team_id>/unassoc_strength/<int:strength_id>/', views.unassoc_strength, name='unassoc_strength'),
-  path('strength/', views.StrengthList.as_view(), name='strengths_index'),
+  path('strength/', views.StrengthList.as_view(), name='strength_index'),
   path('strength/<int:pk>/', views.StrengthDetail.as_view(), name='strength_detail'),
-  path('strength/create/', views.StrengthCreate.as_view(), name="strength_create"),
+  path('strength/create/', views.StrengthCreate.as_view(), name='strength_create'),
   path('strength/<int:pk>/update/', views.StrengthUpdate.as_view(), name='strength_update'),
   path('strength/<int:pk>/delete/', views.StrengthDelete.as_view(), name='strength_delete'),
 ]

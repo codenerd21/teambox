@@ -5,6 +5,12 @@
 <hr />
 
 {% for t in object_list %}
-  <p>{{ t.name }}, {{ t.grade }}, {{ t.gender}}</p>
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ t.name }}</span>
+      <p>Grade: {{ t.grade }}</p>
+      <p>Gender: {{ t.gender }}</p>
+    </div>
+  </div>
 {% endfor %}
 {% endblock %}

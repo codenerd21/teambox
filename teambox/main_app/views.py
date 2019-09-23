@@ -11,6 +11,10 @@ from .forms import PlayerForm
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'teambox21'
 
+class TeamCreate(CreateView):
+  model = Team
+  fields = '__all__' 
+
 def home(request):
   return render(request, 'home.html')
 
@@ -54,10 +58,6 @@ def add_photo(request, team_id):
     except:
       print('An error occurred uploading file to S3')
   return redirect('detail', team_id=team_id)
-
-class TeamCreate(CreateView):
-  model = Team
-  fields = '__all__'
 
 class TeamUpdate(UpdateView):
   model = Team
