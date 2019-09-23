@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
+
 
 POSITIONS = (
   ('PG', 'Point Guard'),
@@ -23,6 +25,7 @@ class Team(models.Model):
   grade = models.IntegerField()
   gender = models.CharField(max_length=15)
   strengths = models.ManyToManyField(Strength)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
     return f'{self.name} ({self.id})'
