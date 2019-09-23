@@ -64,6 +64,12 @@
               {{ strength.name }}
             </span>
           </div>
+          <div class="card-action">
+              <form action="{% url 'unassoc_strength' team.id strength.id %}" method="post">
+                  {% csrf_token %}
+                <button type="submit" class="btn">Remove Strength</button>
+              </form>
+            </div>
         </div>
       {% endfor %}
     {% else %}
@@ -81,7 +87,7 @@
               </span>
             </div>
             <div class="card-action">
-              <form action="" method="post">
+              <form action="{% url 'assoc_strength' team.id strength.id %}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="btn">Add Strength to Team</button>
               </form>

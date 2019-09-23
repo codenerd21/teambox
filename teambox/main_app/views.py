@@ -96,7 +96,12 @@ class StrengthDelete(DeleteView):
   model = Strength
   success_url = '/strength/'
 
+def assoc_strength(request, team_id, strength_id):
+  Team.objects.get(id=team_id).strengths.add(strength_id)
+  return redirect('detail', team_id=team_id)
 
-
+def unassoc_strength(request, team_id, strength_id):
+  Team.objects.get(id=team_id).strengths.remove(strength_id)
+  return redirect('detail', team_id=team.id)
 
 
