@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Player
+from .models import Player, Team
 
 class PlayerForm(ModelForm):
   class Meta:

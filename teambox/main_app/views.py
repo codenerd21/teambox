@@ -13,7 +13,7 @@ BUCKET = 'teambox21'
 
 class TeamCreate(CreateView):
   model = Team
-  fields = '__all__' 
+  fields = ['name', 'grade', 'gender']
 
 def home(request):
   return render(request, 'home.html')
