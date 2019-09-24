@@ -29,7 +29,6 @@ def home(request):
 def about(request):
   return render(request, 'about.html')
 
-@login_required
 def teams_index(request):
   teams = Team.objects.filter(user=request.user)
   return render(request, 'teams/index.html', {'teams': teams})
@@ -117,7 +116,7 @@ def assoc_strength(request, team_id, strength_id):
 @login_required
 def unassoc_strength(request, team_id, strength_id):
   Team.objects.get(id=team_id).strengths.remove(strength_id)
-  return redirect('detail', team_id=team.id)
+  return redirect('detail', team_id=team_id)
 
 def signup(request):
   error_message = ''
