@@ -19,5 +19,6 @@ urlpatterns = [
   path('strength/create/', views.StrengthCreate.as_view(), name='strength_create'),
   path('strength/<int:pk>/update/', views.StrengthUpdate.as_view(), name='strength_update'),
   path('strength/<int:pk>/delete/', views.StrengthDelete.as_view(), name='strength_delete'),
+  path('accounts/signup', views.signup, name='signup'),
 ]
 
